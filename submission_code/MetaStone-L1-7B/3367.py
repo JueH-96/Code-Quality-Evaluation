@@ -1,0 +1,9 @@
+class Solution:
+    def sumOfEncryptedInt(self, nums: List[int]) -> int:
+        total = 0
+        for x in nums:
+            s = str(x)
+            max_d = max(s)
+            encrypted = int(max_d * len(s))
+            total += encrypted
+        return total

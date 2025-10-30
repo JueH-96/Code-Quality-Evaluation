@@ -1,0 +1,1 @@
+Actually, let me think about this more systematically. The expected number of inversions within a randomly shuffled segment of K elements is K(K-1)/4, but I need to be more careful about the calculation.

@@ -1,0 +1,17 @@
+class Solution:
+    def maxFrequencyElements(self, nums: List[int]) -> int:
+        # Count frequency of each number
+        freq = {}
+        for num in nums:
+            freq[num] = freq.get(num, 0) + 1
+        
+        # Find maximum frequency
+        max_freq = max(freq.values())
+        
+        # Count total elements with maximum frequency
+        total = 0
+        for count in freq.values():
+            if count == max_freq:
+                total += count
+                
+        return total

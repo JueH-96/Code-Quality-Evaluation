@@ -1,0 +1,1 @@
+This is getting complex. Let me try a simpler approach based on the key insight:

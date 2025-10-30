@@ -1,0 +1,23 @@
+# YOUR CODE HERE
+import sys
+input = sys.stdin.read
+
+def main():
+    data = input().split()
+    N = int(data[0])
+    M = int(data[1])
+    P = int(data[2])
+    
+    A = list(map(int, data[3:3+N]))
+    B = list(map(int, data[3+N:3+N+M]))
+    
+    total_price = 0
+    
+    for a in A:
+        for b in B:
+            total_price += min(a + b, P)
+    
+    print(total_price)
+
+if __name__ == "__main__":
+    main()

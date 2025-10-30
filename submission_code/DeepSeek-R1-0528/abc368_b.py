@@ -1,0 +1,6 @@
+n = int(input())
+arr = list(map(int, input().split()))
+total = sum(arr)
+max_val = max(arr)
+ans = min(total // 2, total - max_val)
+print(ans)

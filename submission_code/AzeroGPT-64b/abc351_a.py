@@ -1,0 +1,5 @@
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+A = sum(a)
+B = sum(b)
+print(max(1, A-B+1))

@@ -1,0 +1,1 @@
+Wait, I realize my approach above is too complex and won't handle the large constraints efficiently. Let me reconsider with a more mathematical approach:

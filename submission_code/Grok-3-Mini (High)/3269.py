@@ -1,0 +1,14 @@
+class Solution:
+    def countMatchingSubarrays(self, nums: List[int], pattern: List[int]) -> int:
+        count = 0
+        n = len(nums)
+        m = len(pattern)
+        for i in range(n - m):
+            if all(
+                (pattern[k] == 1 and nums[i + k + 1] > nums[i + k]) or
+                (pattern[k] == 0 and nums[i + k + 1] == nums[i + k]) or
+                (pattern[k] == -1 and nums[i + k + 1] < nums[i + k])
+                for k in range(m)
+            ):
+                count += 1
+        return count

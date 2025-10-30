@@ -1,0 +1,1 @@
+h(m) = sum_{d|A_m} phi[d] * S[d]  (mod P).

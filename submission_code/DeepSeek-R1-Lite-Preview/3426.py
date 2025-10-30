@@ -1,0 +1,12 @@
+class Solution:
+    def minimumChairs(self, s: str) -> int:
+        current_chairs = 0
+        max_chairs = 0
+        for event in s:
+            if event == 'E':
+                current_chairs += 1
+                if current_chairs > max_chairs:
+                    max_chairs = current_chairs
+            elif event == 'L':
+                current_chairs -= 1
+        return max_chairs

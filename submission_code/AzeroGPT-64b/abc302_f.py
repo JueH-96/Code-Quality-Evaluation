@@ -1,0 +1,1 @@
+This Python program implements a solution to the problem described, where it constructs a graph to represent the connectivity between sets based on their common elements and uses a Disjoint Set (Union-Find) structure to efficiently merge sets and determine if sets containing '1' and 'M' can be joined with the minimum number of operations.

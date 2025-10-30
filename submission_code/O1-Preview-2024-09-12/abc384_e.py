@@ -1,0 +1,1 @@
+threading.Thread(target=main).start()

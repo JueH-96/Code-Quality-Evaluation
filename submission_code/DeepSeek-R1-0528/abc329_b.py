@@ -1,0 +1,9 @@
+def main():
+    n = int(input().strip())
+    arr = list(map(int, input().split()))
+    max_val = max(arr)
+    second_max = max(x for x in arr if x < max_val)
+    print(second_max)
+
+if __name__ == "__main__":
+    main()

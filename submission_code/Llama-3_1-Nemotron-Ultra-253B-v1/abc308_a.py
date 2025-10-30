@@ -1,0 +1,5 @@
+s = list(map(int, input().split()))
+condition1 = s == sorted(s)
+condition2 = all(100 <= x <= 675 for x in s)
+condition3 = all(x % 25 == 0 for x in s)
+print("Yes" if condition1 and condition2 and condition3 else "No")

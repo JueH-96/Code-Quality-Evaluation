@@ -1,0 +1,26 @@
+n = int(input())
+
+low = 1
+high = n
+x_max = 0
+
+# Binary search to find the maximum x where x^3 <= n
+while low <= high:
+    mid = (low + high) // 2
+    cube = mid ** 3
+    if cube <= n:
+        x_max = mid
+        low = mid + 1
+    else:
+        high = mid - 1
+
+# Check each x from x_max down to 1 for a palindromic cube
+for x in range(x_max, 0, -1):
+    cube = x ** 3
+    s = str(cube)
+    if s == s[::-1]:
+        print(cube)
+        exit()
+
+# This line is theoretically unreachable as 1 is always a palindrome
+print(1)

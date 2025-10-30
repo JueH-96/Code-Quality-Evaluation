@@ -1,0 +1,8 @@
+n = int(input())
+a = list(map(int, input().split()))
+
+sorted_a = sorted(a, reverse=True)
+second_largest = sorted_a[1]
+
+index_of_second_largest = a.index(second_largest) + 1
+print(index_of_second_largest)

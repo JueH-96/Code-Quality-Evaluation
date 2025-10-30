@@ -1,0 +1,17 @@
+from typing import List
+
+class Solution:
+    def minimumBoxes(self, apple: List[int], capacity: List[int]) -> int:
+        total_apples = sum(apple)
+        capacity.sort(reverse=True)
+        
+        count = 0
+        current_sum = 0
+        
+        for cap in capacity:
+            current_sum += cap
+            count += 1
+            if current_sum >= total_apples:
+                return count
+        
+        return count  # Should be unreachable because it's guaranteed possible to redistribute

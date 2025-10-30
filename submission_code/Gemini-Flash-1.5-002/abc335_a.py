@@ -1,0 +1,3 @@
+# YOUR CODE HERE
+s = input()
+print(s[:-1] + '4')

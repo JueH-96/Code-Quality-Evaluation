@@ -1,0 +1,6 @@
+# YOUR CODE HERE
+for x in range(n + 1):
+    for y in range(x + 1):
+        for z in range(y + 1):
+            if x + y + z <= n:
+                print(x, y, z)

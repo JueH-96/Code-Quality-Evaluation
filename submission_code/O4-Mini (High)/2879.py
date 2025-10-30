@@ -1,0 +1,1 @@
+dp[i][j] = min over p of (dp[p][j-1] + cost[p][i-1])

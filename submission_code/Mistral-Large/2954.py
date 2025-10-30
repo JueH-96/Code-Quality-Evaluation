@@ -1,0 +1,15 @@
+from typing import List
+from collections import deque
+
+class Solution:
+    def maxSum(self, nums: List[int], m: int, k: int) -> int:
+        n = len(nums)
+        max_sum = 0
+
+        # Sliding window approach
+        for i in range(n - k + 1):
+            subarray = nums[i:i+k]
+            if len(set(subarray)) >= m:
+                max_sum = max(max_sum, sum(subarray))
+
+        return max_sum

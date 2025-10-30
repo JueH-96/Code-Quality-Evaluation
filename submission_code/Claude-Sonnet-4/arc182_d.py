@@ -1,0 +1,1 @@
+Hmm, this greedy approach might not work because the order of operations matters. Let me go back to a BFS approach but with better optimization:

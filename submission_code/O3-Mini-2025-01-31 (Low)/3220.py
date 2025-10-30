@@ -1,0 +1,15 @@
+from typing import List
+
+class Solution:
+    def countTestedDevices(self, batteryPercentages: List[int]) -> int:
+        tested_count = 0
+        n = len(batteryPercentages)
+        
+        for i in range(n):
+            if batteryPercentages[i] > 0:
+                tested_count += 1
+                # Decrease battery for all devices beyond index i
+                for j in range(i + 1, n):
+                    batteryPercentages[j] = max(batteryPercentages[j] - 1, 0)
+                    
+        return tested_count

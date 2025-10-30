@@ -1,0 +1,18 @@
+class Solution:
+    def beautifulSubstrings(self, s: str, k: int) -> int:
+        vowels_set = {'a', 'e', 'i', 'o', 'u'}
+        n = len(s)
+        ans = 0
+        for start in range(n):
+            vowels = 0
+            consonants = 0
+            for end in range(start, n):
+                if s[end] in vowels_set:
+                    vowels +=1
+                else:
+                    consonants +=1
+                if vowels == consonants and vowels > 0:
+                    product = vowels * consonants
+                    if product % k == 0:
+                        ans +=1
+        return ans

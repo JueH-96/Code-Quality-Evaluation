@@ -1,0 +1,15 @@
+# Python Code Quality Assessment Tools - Requirements
+# Python Version: 3.12+
+
+# Core dependencies
+pylint>=3.0.0
+radon>=6.0.0
+bandit>=1.7.5
+
+# For JSON processing and data handling
+# (Built-in modules used: json, csv, os, tempfile, re, subprocess, glob, datetime, time, urllib, collections)
+
+# Optional: For better development experience
+# black>=23.0.0          # Code formatter
+# flake8>=6.0.0          # Additional linter
+# mypy>=1.0.0            # Type checker

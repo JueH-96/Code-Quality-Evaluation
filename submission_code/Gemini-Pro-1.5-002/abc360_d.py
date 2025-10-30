@@ -1,0 +1,19 @@
+# YOUR CODE HERE
+def solve():
+    n, t = map(int, input().split())
+    s = input()
+    x = list(map(int, input().split()))
+
+    ans = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            if s[i] == '1' and s[j] == '0':
+                if x[i] < x[j]:
+                    if (x[j] - x[i]) / 2 <= t:
+                        ans += 1
+            elif s[i] == '0' and s[j] == '1':
+                if x[i] > x[j]:
+                    if (x[i] - x[j]) / 2 <= t:
+                        ans +=1
+    print(ans)
+solve()

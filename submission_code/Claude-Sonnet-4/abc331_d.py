@@ -1,0 +1,1 @@
+Wait, this approach might be too slow for large queries. Let me optimize using the mathematical approach:

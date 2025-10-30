@@ -1,0 +1,19 @@
+class Solution:
+    def minFlips(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        
+        # Calculate cost to make all rows palindromic
+        row_cost = 0
+        for r in range(m):
+            for c in range(n // 2):
+                if grid[r][c] != grid[r][n - 1 - c]:
+                    row_cost += 1
+        
+        # Calculate cost to make all columns palindromic
+        col_cost = 0
+        for c in range(n):
+            for r in range(m // 2):
+                if grid[r][c] != grid[m - 1 - r][c]:
+                    col_cost += 1
+        
+        return min(row_cost, col_cost)

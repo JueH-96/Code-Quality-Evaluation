@@ -1,0 +1,11 @@
+from typing import List
+
+class Solution:
+    def numberGame(self, nums: List[int]) -> List[int]:
+        nums.sort()
+        arr = []
+        while nums:
+            alice = nums.pop(0)
+            bob = nums.pop(0)
+            arr.extend([bob, alice])
+        return arr

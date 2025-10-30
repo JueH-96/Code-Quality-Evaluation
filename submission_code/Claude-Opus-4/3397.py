@@ -1,0 +1,10 @@
+class Solution:
+    def addedInteger(self, nums1: List[int], nums2: List[int]) -> int:
+        # Sort both arrays
+        sorted_nums1 = sorted(nums1)
+        sorted_nums2 = sorted(nums2)
+        
+        # Calculate x using the first elements
+        x = sorted_nums2[0] - sorted_nums1[0]
+        
+        return x

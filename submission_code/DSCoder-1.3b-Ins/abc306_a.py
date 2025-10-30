@@ -1,0 +1,8 @@
+N = int(input())
+S = input()
+
+result = ''
+for i in range(N):
+    result += S[i] * 2
+
+print(result)

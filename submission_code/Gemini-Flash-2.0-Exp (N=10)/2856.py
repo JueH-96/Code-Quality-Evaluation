@@ -1,0 +1,11 @@
+class Solution:
+    def countCompleteSubarrays(self, nums: List[int]) -> int:
+        distinct_count = len(set(nums))
+        n = len(nums)
+        count = 0
+        for i in range(n):
+            for j in range(i, n):
+                sub_array = nums[i:j+1]
+                if len(set(sub_array)) == distinct_count:
+                    count += 1
+        return count

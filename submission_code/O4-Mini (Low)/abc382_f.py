@@ -1,0 +1,1 @@
+final_row = max( R_i, support−1 ).

@@ -1,0 +1,8 @@
+R = int(input())
+if R <= 99:
+    next_threshold = 100
+elif R <= 199:
+    next_threshold = 200
+else:
+    next_threshold = 300
+print(next_threshold - R)

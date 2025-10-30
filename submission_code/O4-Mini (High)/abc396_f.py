@@ -1,0 +1,1 @@
+Δ = - (L * N - 2 * sumPos[val] + L)

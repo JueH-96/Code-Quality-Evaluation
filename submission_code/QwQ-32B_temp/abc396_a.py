@@ -1,0 +1,8 @@
+n = int(input())
+a = list(map(int, input().split()))
+found = False
+for i in range(len(a) - 2):
+    if a[i] == a[i+1] == a[i+2]:
+        found = True
+        break
+print("Yes" if found else "No")

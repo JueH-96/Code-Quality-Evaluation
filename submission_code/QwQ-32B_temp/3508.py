@@ -1,0 +1,6 @@
+class Solution:
+    def minChanges(self, n: int, k: int) -> int:
+        if (n & k) != k:
+            return -1
+        else:
+            return bin(n ^ k).count('1')

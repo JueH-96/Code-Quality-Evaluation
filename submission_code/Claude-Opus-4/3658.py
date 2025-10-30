@@ -1,0 +1,1 @@
+Wait, this solution is getting too complex. Let me reconsider with a cleaner approach:

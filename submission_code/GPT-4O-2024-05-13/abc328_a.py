@@ -1,0 +1,11 @@
+# YOUR CODE HERE
+import sys
+input = sys.stdin.read
+
+data = input().split()
+N = int(data[0])
+X = int(data[1])
+scores = list(map(int, data[2:]))
+
+total_score = sum(score for score in scores if score <= X)
+print(total_score)

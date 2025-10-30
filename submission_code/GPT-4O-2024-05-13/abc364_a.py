@@ -1,0 +1,14 @@
+# YOUR CODE HERE
+import sys
+input = sys.stdin.read
+
+data = input().split()
+N = int(data[0])
+dishes = data[1:]
+
+for i in range(1, N):
+    if dishes[i] == "sweet" and dishes[i-1] == "sweet":
+        print("No")
+        break
+else:
+    print("Yes")

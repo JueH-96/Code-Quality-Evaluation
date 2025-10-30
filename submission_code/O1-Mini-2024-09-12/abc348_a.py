@@ -1,0 +1,3 @@
+N = int(input())
+result = ''.join(['x' if i % 3 == 0 else 'o' for i in range(1, N+1)])
+print(result)

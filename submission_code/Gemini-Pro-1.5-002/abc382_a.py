@@ -1,0 +1,6 @@
+n, d = map(int, input().split())
+s = input()
+cookie_count = s.count('@')
+empty_count = s.count('.')
+empty_after_d = empty_count + (cookie_count - d)
+print(empty_after_d)

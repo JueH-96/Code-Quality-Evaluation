@@ -1,0 +1,3 @@
+And oh, that actually means I didn't have to loop through all nodes but just compute dp from all leaf up to the node of degree 4. But simplicity and time limit, so we can keep the single inner loop in this solution, and the leaf-to-node-of-degree-4 computation happens because of the recursive definition of our DP calls (computed once).
+
+This is the code I'm going to go in in...

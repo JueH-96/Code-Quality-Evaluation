@@ -1,0 +1,1 @@
+Wait, I need to reconsider the approach. The issue is that when we're in state 1, we need to remember which uppercase letter we saw to properly transition to state 2. Let me revise:

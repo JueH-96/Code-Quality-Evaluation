@@ -1,0 +1,1 @@
+dp_poly[j] = ∑_{k≡j mod M} C(d,k)

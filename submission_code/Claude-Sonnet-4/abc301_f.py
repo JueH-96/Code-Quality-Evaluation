@@ -1,0 +1,1 @@
+Wait, I need to be more careful about the transitions. Let me rewrite this more systematically:

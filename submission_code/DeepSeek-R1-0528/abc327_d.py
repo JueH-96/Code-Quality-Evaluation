@@ -1,0 +1,45 @@
+import sys
+from collections import deque
+
+def main():
+    data = sys.stdin.read().split()
+    if not data:
+        print("Yes")
+        return
+    
+    n = int(data[0])
+    m = int(data[1])
+    A = list(map(int, data[2:2+m]))
+    B = list(map(int, data[2+m:2+2*m]))
+    
+    for i in range(m):
+        if A[i] == B[i]:
+            print("No")
+            return
+            
+    graph = [[] for _ in range(n+1)]
+    for i in range(m):
+        a = A[i]
+        b = B[i]
+        graph[a].append(b)
+        graph[b].append(a)
+        
+    color = [-1] * (n+1)
+    
+    for i in range(1, n+1):
+        if color[i] == -1:
+            color[i] = 0
+            q = deque([i])
+            while q:
+                cur = q.popleft()
+                for neighbor in graph[cur]:
+                    if color[neighbor] == -1:
+                        color[neighbor] = color[cur] ^ 1
+                        q.append(neighbor)
+                    elif color[neighbor] == color[cur]:
+                        print("No")
+                        return
+    print("Yes")
+
+if __name__ == "__main__":
+    main()

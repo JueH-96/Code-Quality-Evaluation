@@ -1,0 +1,10 @@
+# YOUR CODE HERE
+N = int(input())
+S = input().strip()
+
+for i in range(N - 1):
+    if (S[i] == 'a' and S[i+1] == 'b') or (S[i] == 'b' and S[i+1] == 'a'):
+        print("Yes")
+        break
+else:
+    print("No")

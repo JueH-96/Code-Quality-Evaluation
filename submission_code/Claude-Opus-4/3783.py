@@ -1,0 +1,1 @@
+Wait, I need to reconsider this. The counting logic is getting complex. Let me simplify:

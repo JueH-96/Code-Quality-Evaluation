@@ -1,0 +1,10 @@
+n, c1, c2 = input().split()
+n = int(n)
+s = input()
+result = ""
+for char in s:
+    if char == c1:
+        result += c1
+    else:
+        result += c2
+print(result)

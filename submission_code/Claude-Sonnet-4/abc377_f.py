@@ -1,0 +1,1 @@
+Wait, this is still too slow for large N. Let me think of the mathematical approach:

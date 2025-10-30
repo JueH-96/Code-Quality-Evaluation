@@ -1,0 +1,5 @@
+N_and_rest = input().split()
+N = int(N_and_rest[0])
+A = list(map(int, input().split()))
+total_sum = sum(A)
+print(-total_sum)
