@@ -115,7 +115,7 @@ Results from each checker are saved in corresponding result directories:
 pylint_result/
 ├── pylint_summary.csv              # Summary results file
 ├── LLM_Difficulty_Pylint.csv       # Detailed evaluation results grouped by LLM
-└── pylint_raw/                     # Raw data directory
+pylint_raw/                     # Raw data directory
     ├── <llm_name>/
     │   ├── <question_id>_raw.txt
     │   └── ...
@@ -128,7 +128,7 @@ pylint_result/
 sonarqube_result/
 ├── sonarqube_summary.csv           # Summary results file
 ├── LLM_Difficulty_SonarQube.csv    # Detailed evaluation results grouped by LLM
-└── sonarqube_raw/                  # Raw data directory
+sonarqube_raw/                  # Raw data directory
     ├── <llm_name>/
     │   ├── <llm_name>_page1.txt
     │   └── ...
@@ -141,7 +141,7 @@ sonarqube_result/
 radon_result/
 ├── radon_summary.csv               # Summary results file
 ├── LLM_Difficulty_Radon.csv        # Detailed evaluation results grouped by LLM
-└── radon_raw/                      # Raw data directory
+radon_raw/                      # Raw data directory
     ├── <llm_name>/
     │   ├── <question_id>_cc.txt
     │   ├── <question_id>_mi.txt
@@ -155,7 +155,7 @@ radon_result/
 bandit_result/
 ├── bandit_summary.csv              # Summary results file
 ├── LLM_Difficulty_Bandit.csv       # Detailed evaluation results grouped by LLM
-└── bandit_raw/                     # Raw data directory
+bandit_raw/                     # Raw data directory
     ├── <llm_name>/
     │   ├── <question_id>_raw.json
     │   └── ...
