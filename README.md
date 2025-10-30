@@ -188,7 +188,7 @@ Stores raw output data from each check, useful for:
 ## Checker Functionality
 
 ### Pylint Checker
-- **Function**: Check code compliance and quality
+- **Function**: Comprehensive code quality analysis
 - **Output Metrics**: Code score (0-10), warning count, error count, code convention issues, etc.
 
 ### SonarQube Checker
@@ -196,7 +196,7 @@ Stores raw output data from each check, useful for:
 - **Output Metrics**: Bug count, code smells, security vulnerabilities, technical debt, etc.
 
 ### Radon Checker
-- **Function**: Code complexity analysis
+- **Function**: Comprehensive code quality analysis
 - **Output Metrics**: Cyclomatic Complexity (CC), Maintainability Index (MI), etc.
 
 ### Bandit Checker
