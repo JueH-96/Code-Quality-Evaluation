@@ -1,0 +1,73 @@
+{
+  "Bandit": {
+    "tool": "Bandit",
+    "status": "success",
+    "n_llms": 58,
+    "correlations": {
+      "Codes With Issues": {
+        "pearson_corr": 0.2052,
+        "pearson_p": 0.1223,
+        "spearman_corr": 0.2419,
+        "spearman_p": 0.0674,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Issue Rate (%)": {
+        "pearson_corr": 0.1935,
+        "pearson_p": 0.1455,
+        "spearman_corr": 0.2311,
+        "spearman_p": 0.0809,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Total Issues": {
+        "pearson_corr": 0.2145,
+        "pearson_p": 0.1058,
+        "spearman_corr": 0.2852,
+        "spearman_p": 0.03,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Avg Issues Per Code": {
+        "pearson_corr": 0.1724,
+        "pearson_p": 0.1956,
+        "spearman_corr": 0.1444,
+        "spearman_p": 0.2796,
+        "n_samples": 58,
+        "normalized": false
+      },
+      "Medium Severity": {
+        "pearson_corr": -0.2152,
+        "pearson_p": 0.1047,
+        "spearman_corr": -0.2325,
+        "spearman_p": 0.0791,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Low Severity": {
+        "pearson_corr": 0.2424,
+        "pearson_p": 0.0668,
+        "spearman_corr": 0.3824,
+        "spearman_p": 0.0031,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "High Confidence": {
+        "pearson_corr": 0.181,
+        "pearson_p": 0.1739,
+        "spearman_corr": 0.2108,
+        "spearman_p": 0.1122,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Medium Confidence": {
+        "pearson_corr": 0.3222,
+        "pearson_p": 0.0136,
+        "spearman_corr": 0.3263,
+        "spearman_p": 0.0124,
+        "n_samples": 58,
+        "normalized": true
+      }
+    }
+  }
+}

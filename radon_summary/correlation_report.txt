@@ -1,0 +1,143 @@
+================================================================================
+Radon - Code Quality Metrics vs Correctness Rate Correlation Analysis
+================================================================================
+
+ANALYSIS TYPE: COMPLETE (100% of data, NOT a sample)
+
+Status: Success
+Number of LLMs: 58 (ALL LLMs included)
+Number of metrics analyzed: 16
+Data Coverage: 100% (Complete dataset, no sampling)
+
+Metric Correlation Ranking (by Absolute Pearson Correlation):
+--------------------------------------------------------------------------------
+
+1. Total SLOC
+   Pearson Correlation:  0.8282 (p=0.0000)
+   Spearman Correlation:  0.8269 (p=0.0000)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: ***
+   Correlation: Strong Positive
+
+2. Total LLOC
+   Pearson Correlation:  0.8254 (p=0.0000)
+   Spearman Correlation:  0.8216 (p=0.0000)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: ***
+   Correlation: Strong Positive
+
+3. Grade C
+   Pearson Correlation:  0.8102 (p=0.0000)
+   Spearman Correlation:  0.8192 (p=0.0000)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: ***
+   Correlation: Strong Positive
+
+4. Total Complexity
+   Pearson Correlation:  0.8018 (p=0.0000)
+   Spearman Correlation:  0.8280 (p=0.0000)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: ***
+   Correlation: Strong Positive
+
+5. Avg Complexity
+   Pearson Correlation:  0.7937 (p=0.0000)
+   Spearman Correlation:  0.7702 (p=0.0000)
+   Sample size: 58 (all available data)
+   Significance: ***
+   Correlation: Strong Positive
+
+6. Grade D
+   Pearson Correlation:  0.7588 (p=0.0000)
+   Spearman Correlation:  0.8010 (p=0.0000)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: ***
+   Correlation: Strong Positive
+
+7. Grade A
+   Pearson Correlation: -0.7391 (p=0.0000)
+   Spearman Correlation: -0.7582 (p=0.0000)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: ***
+   Correlation: Strong Negative
+
+8. Grade E
+   Pearson Correlation:  0.6389 (p=0.0000)
+   Spearman Correlation:  0.6973 (p=0.0000)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: ***
+   Correlation: Moderate Positive
+
+9. Avg LOC
+   Pearson Correlation:  0.6068 (p=0.0000)
+   Spearman Correlation:  0.7374 (p=0.0000)
+   Sample size: 58 (all available data)
+   Significance: ***
+   Correlation: Moderate Positive
+
+10. Total LOC
+   Pearson Correlation:  0.5977 (p=0.0000)
+   Spearman Correlation:  0.7232 (p=0.0000)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: ***
+   Correlation: Moderate Positive
+
+11. Grade F
+   Pearson Correlation:  0.5552 (p=0.0000)
+   Spearman Correlation:  0.6353 (p=0.0000)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: ***
+   Correlation: Moderate Positive
+
+12. Avg Maintainability Index
+   Pearson Correlation: -0.3866 (p=0.0027)
+   Spearman Correlation: -0.3656 (p=0.0048)
+   Sample size: 58 (all available data)
+   Significance: **
+   Correlation: Weak Negative
+
+13. Total Blank
+   Pearson Correlation:  0.3416 (p=0.0087)
+   Spearman Correlation:  0.3422 (p=0.0086)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: **
+   Correlation: Weak Positive
+
+14. Total Comments
+   Pearson Correlation:  0.3347 (p=0.0102)
+   Spearman Correlation:  0.2095 (p=0.1145)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: *
+   Correlation: Weak Positive
+
+15. Total Functions
+   Pearson Correlation:  0.2216 (p=0.0945)
+   Spearman Correlation:  0.2089 (p=0.1156)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Weak Positive
+
+16. Grade B
+   Pearson Correlation:  0.1544 (p=0.2471)
+   Spearman Correlation:  0.0764 (p=0.5689)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Very Weak Positive
+
+--------------------------------------------------------------------------------
+Significance markers: *** p<0.001, ** p<0.01, * p<0.05, n.s. not significant
+
+Note: This analysis uses ALL available data points (100% coverage)

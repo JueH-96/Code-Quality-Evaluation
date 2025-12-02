@@ -1,0 +1,8 @@
+﻿Metric,Pearson Correlation,Pearson P-value,Spearman Correlation,Spearman P-value,Samples,Normalized,Significant (p<0.05)
+Avg Score,0.6594,0.0,0.7527,0.0,58,No,Yes
+Convention (C),-0.4843,0.0001,-0.6154,0.0,58,Yes,Yes
+Total Issues,-0.4678,0.0002,-0.6839,0.0,58,Yes,Yes
+Avg Issues Per Code,-0.4677,0.0002,-0.6842,0.0,58,No,Yes
+Warning (W),-0.3095,0.0181,-0.5404,0.0,58,Yes,Yes
+Error (E),0.0537,0.6888,0.0529,0.6932,58,Yes,No
+Refactor (R),-0.019,0.8873,-0.0014,0.9914,58,Yes,No

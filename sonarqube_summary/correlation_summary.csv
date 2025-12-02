@@ -1,0 +1,19 @@
+﻿Metric,Pearson Correlation,Pearson P-value,Spearman Correlation,Spearman P-value,Samples,Normalized,Significant (p<0.05)
+SQ Reliability: Low,0.4111,0.0013,0.3541,0.0064,58,Yes,Yes
+SQ Maintainability: High,0.3379,0.0095,0.8362,0.0,58,Yes,Yes
+Severity: Critical,0.3041,0.0203,0.6472,0.0,58,Yes,Yes
+Type: Code Smell,0.2542,0.0542,0.5195,0.0,58,Yes,No
+Avg Issues Per Code,0.2487,0.0598,0.5499,0.0,58,No,No
+Total Issues,0.2485,0.06,0.5481,0.0,58,Yes,No
+Severity: Minor,0.2304,0.0818,0.2655,0.044,58,Yes,No
+SQ Maintainability: Low,0.2295,0.083,0.2589,0.0497,58,Yes,No
+SQ Maintainability: Medium,0.2183,0.0996,0.3364,0.0098,58,Yes,No
+Severity: Major,0.2147,0.1055,0.3234,0.0133,58,Yes,No
+SQ Maintainability: Blocker,0.1944,0.1437,0.1838,0.1673,58,Yes,No
+SQ Maintainability: Info,0.1568,0.2397,0.1503,0.26,58,Yes,No
+Severity: Info,0.1568,0.2397,0.1503,0.26,58,Yes,No
+SQ Reliability: Blocker,-0.0997,0.4565,-0.1911,0.1508,58,Yes,No
+SQ Reliability: Medium,0.0961,0.4732,0.0313,0.8154,58,Yes,No
+SQ Reliability: High,0.0873,0.5146,-0.0085,0.9496,58,Yes,No
+Type: Bug,0.084,0.5306,-0.0369,0.7836,58,Yes,No
+Severity: Blocker,-0.0166,0.9018,-0.1152,0.3894,58,Yes,No

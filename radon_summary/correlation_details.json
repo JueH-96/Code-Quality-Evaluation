@@ -1,0 +1,137 @@
+{
+  "Radon": {
+    "tool": "Radon",
+    "status": "success",
+    "n_llms": 58,
+    "correlations": {
+      "Avg Complexity": {
+        "pearson_corr": 0.7937,
+        "pearson_p": 0.0,
+        "spearman_corr": 0.7702,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": false
+      },
+      "Total Complexity": {
+        "pearson_corr": 0.8018,
+        "pearson_p": 0.0,
+        "spearman_corr": 0.828,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Avg Maintainability Index": {
+        "pearson_corr": -0.3866,
+        "pearson_p": 0.0027,
+        "spearman_corr": -0.3656,
+        "spearman_p": 0.0048,
+        "n_samples": 58,
+        "normalized": false
+      },
+      "Avg LOC": {
+        "pearson_corr": 0.6068,
+        "pearson_p": 0.0,
+        "spearman_corr": 0.7374,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": false
+      },
+      "Total LOC": {
+        "pearson_corr": 0.5977,
+        "pearson_p": 0.0,
+        "spearman_corr": 0.7232,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Total LLOC": {
+        "pearson_corr": 0.8254,
+        "pearson_p": 0.0,
+        "spearman_corr": 0.8216,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Total SLOC": {
+        "pearson_corr": 0.8282,
+        "pearson_p": 0.0,
+        "spearman_corr": 0.8269,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Total Comments": {
+        "pearson_corr": 0.3347,
+        "pearson_p": 0.0102,
+        "spearman_corr": 0.2095,
+        "spearman_p": 0.1145,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Total Blank": {
+        "pearson_corr": 0.3416,
+        "pearson_p": 0.0087,
+        "spearman_corr": 0.3422,
+        "spearman_p": 0.0086,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Total Functions": {
+        "pearson_corr": 0.2216,
+        "pearson_p": 0.0945,
+        "spearman_corr": 0.2089,
+        "spearman_p": 0.1156,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Grade A": {
+        "pearson_corr": -0.7391,
+        "pearson_p": 0.0,
+        "spearman_corr": -0.7582,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Grade B": {
+        "pearson_corr": 0.1544,
+        "pearson_p": 0.2471,
+        "spearman_corr": 0.0764,
+        "spearman_p": 0.5689,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Grade C": {
+        "pearson_corr": 0.8102,
+        "pearson_p": 0.0,
+        "spearman_corr": 0.8192,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Grade D": {
+        "pearson_corr": 0.7588,
+        "pearson_p": 0.0,
+        "spearman_corr": 0.801,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Grade E": {
+        "pearson_corr": 0.6389,
+        "pearson_p": 0.0,
+        "spearman_corr": 0.6973,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Grade F": {
+        "pearson_corr": 0.5552,
+        "pearson_p": 0.0,
+        "spearman_corr": 0.6353,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": true
+      }
+    }
+  }
+}

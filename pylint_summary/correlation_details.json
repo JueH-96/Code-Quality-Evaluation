@@ -1,0 +1,65 @@
+{
+  "Pylint": {
+    "tool": "Pylint",
+    "status": "success",
+    "n_llms": 58,
+    "correlations": {
+      "Total Issues": {
+        "pearson_corr": -0.4678,
+        "pearson_p": 0.0002,
+        "spearman_corr": -0.6839,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Avg Issues Per Code": {
+        "pearson_corr": -0.4677,
+        "pearson_p": 0.0002,
+        "spearman_corr": -0.6842,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": false
+      },
+      "Convention (C)": {
+        "pearson_corr": -0.4843,
+        "pearson_p": 0.0001,
+        "spearman_corr": -0.6154,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Refactor (R)": {
+        "pearson_corr": -0.019,
+        "pearson_p": 0.8873,
+        "spearman_corr": -0.0014,
+        "spearman_p": 0.9914,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Warning (W)": {
+        "pearson_corr": -0.3095,
+        "pearson_p": 0.0181,
+        "spearman_corr": -0.5404,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Error (E)": {
+        "pearson_corr": 0.0537,
+        "pearson_p": 0.6888,
+        "spearman_corr": 0.0529,
+        "spearman_p": 0.6932,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Avg Score": {
+        "pearson_corr": 0.6594,
+        "pearson_p": 0.0,
+        "spearman_corr": 0.7527,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": false
+      }
+    }
+  }
+}

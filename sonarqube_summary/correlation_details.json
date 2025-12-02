@@ -1,0 +1,153 @@
+{
+  "Sonarqube": {
+    "tool": "Sonarqube",
+    "status": "success",
+    "n_llms": 58,
+    "correlations": {
+      "Avg Issues Per Code": {
+        "pearson_corr": 0.2487,
+        "pearson_p": 0.0598,
+        "spearman_corr": 0.5499,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": false
+      },
+      "Total Issues": {
+        "pearson_corr": 0.2485,
+        "pearson_p": 0.06,
+        "spearman_corr": 0.5481,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Severity: Blocker": {
+        "pearson_corr": -0.0166,
+        "pearson_p": 0.9018,
+        "spearman_corr": -0.1152,
+        "spearman_p": 0.3894,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Severity: Critical": {
+        "pearson_corr": 0.3041,
+        "pearson_p": 0.0203,
+        "spearman_corr": 0.6472,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Severity: Major": {
+        "pearson_corr": 0.2147,
+        "pearson_p": 0.1055,
+        "spearman_corr": 0.3234,
+        "spearman_p": 0.0133,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Severity: Minor": {
+        "pearson_corr": 0.2304,
+        "pearson_p": 0.0818,
+        "spearman_corr": 0.2655,
+        "spearman_p": 0.044,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Severity: Info": {
+        "pearson_corr": 0.1568,
+        "pearson_p": 0.2397,
+        "spearman_corr": 0.1503,
+        "spearman_p": 0.26,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Type: Bug": {
+        "pearson_corr": 0.084,
+        "pearson_p": 0.5306,
+        "spearman_corr": -0.0369,
+        "spearman_p": 0.7836,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "Type: Code Smell": {
+        "pearson_corr": 0.2542,
+        "pearson_p": 0.0542,
+        "spearman_corr": 0.5195,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "SQ Reliability: Blocker": {
+        "pearson_corr": -0.0997,
+        "pearson_p": 0.4565,
+        "spearman_corr": -0.1911,
+        "spearman_p": 0.1508,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "SQ Reliability: High": {
+        "pearson_corr": 0.0873,
+        "pearson_p": 0.5146,
+        "spearman_corr": -0.0085,
+        "spearman_p": 0.9496,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "SQ Reliability: Medium": {
+        "pearson_corr": 0.0961,
+        "pearson_p": 0.4732,
+        "spearman_corr": 0.0313,
+        "spearman_p": 0.8154,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "SQ Reliability: Low": {
+        "pearson_corr": 0.4111,
+        "pearson_p": 0.0013,
+        "spearman_corr": 0.3541,
+        "spearman_p": 0.0064,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "SQ Maintainability: Blocker": {
+        "pearson_corr": 0.1944,
+        "pearson_p": 0.1437,
+        "spearman_corr": 0.1838,
+        "spearman_p": 0.1673,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "SQ Maintainability: High": {
+        "pearson_corr": 0.3379,
+        "pearson_p": 0.0095,
+        "spearman_corr": 0.8362,
+        "spearman_p": 0.0,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "SQ Maintainability: Medium": {
+        "pearson_corr": 0.2183,
+        "pearson_p": 0.0996,
+        "spearman_corr": 0.3364,
+        "spearman_p": 0.0098,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "SQ Maintainability: Low": {
+        "pearson_corr": 0.2295,
+        "pearson_p": 0.083,
+        "spearman_corr": 0.2589,
+        "spearman_p": 0.0497,
+        "n_samples": 58,
+        "normalized": true
+      },
+      "SQ Maintainability: Info": {
+        "pearson_corr": 0.1568,
+        "pearson_p": 0.2397,
+        "spearman_corr": 0.1503,
+        "spearman_p": 0.26,
+        "n_samples": 58,
+        "normalized": true
+      }
+    }
+  }
+}

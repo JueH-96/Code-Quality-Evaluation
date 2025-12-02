@@ -1,0 +1,161 @@
+================================================================================
+Sonarqube - Code Quality Metrics vs Correctness Rate Correlation Analysis
+================================================================================
+
+ANALYSIS TYPE: COMPLETE (100% of data, NOT a sample)
+
+Status: Success
+Number of LLMs: 58 (ALL LLMs included)
+Number of metrics analyzed: 18
+Data Coverage: 100% (Complete dataset, no sampling)
+
+Metric Correlation Ranking (by Absolute Pearson Correlation):
+--------------------------------------------------------------------------------
+
+1. SQ Reliability: Low
+   Pearson Correlation:  0.4111 (p=0.0013)
+   Spearman Correlation:  0.3541 (p=0.0064)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: **
+   Correlation: Moderate Positive
+
+2. SQ Maintainability: High
+   Pearson Correlation:  0.3379 (p=0.0095)
+   Spearman Correlation:  0.8362 (p=0.0000)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: **
+   Correlation: Weak Positive
+
+3. Severity: Critical
+   Pearson Correlation:  0.3041 (p=0.0203)
+   Spearman Correlation:  0.6472 (p=0.0000)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: *
+   Correlation: Weak Positive
+
+4. Type: Code Smell
+   Pearson Correlation:  0.2542 (p=0.0542)
+   Spearman Correlation:  0.5195 (p=0.0000)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Weak Positive
+
+5. Avg Issues Per Code
+   Pearson Correlation:  0.2487 (p=0.0598)
+   Spearman Correlation:  0.5499 (p=0.0000)
+   Sample size: 58 (all available data)
+   Significance: n.s.
+   Correlation: Weak Positive
+
+6. Total Issues
+   Pearson Correlation:  0.2485 (p=0.0600)
+   Spearman Correlation:  0.5481 (p=0.0000)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Weak Positive
+
+7. Severity: Minor
+   Pearson Correlation:  0.2304 (p=0.0818)
+   Spearman Correlation:  0.2655 (p=0.0440)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Weak Positive
+
+8. SQ Maintainability: Low
+   Pearson Correlation:  0.2295 (p=0.0830)
+   Spearman Correlation:  0.2589 (p=0.0497)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Weak Positive
+
+9. SQ Maintainability: Medium
+   Pearson Correlation:  0.2183 (p=0.0996)
+   Spearman Correlation:  0.3364 (p=0.0098)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Weak Positive
+
+10. Severity: Major
+   Pearson Correlation:  0.2147 (p=0.1055)
+   Spearman Correlation:  0.3234 (p=0.0133)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Weak Positive
+
+11. SQ Maintainability: Blocker
+   Pearson Correlation:  0.1944 (p=0.1437)
+   Spearman Correlation:  0.1838 (p=0.1673)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Very Weak Positive
+
+12. Severity: Info
+   Pearson Correlation:  0.1568 (p=0.2397)
+   Spearman Correlation:  0.1503 (p=0.2600)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Very Weak Positive
+
+13. SQ Maintainability: Info
+   Pearson Correlation:  0.1568 (p=0.2397)
+   Spearman Correlation:  0.1503 (p=0.2600)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Very Weak Positive
+
+14. SQ Reliability: Blocker
+   Pearson Correlation: -0.0997 (p=0.4565)
+   Spearman Correlation: -0.1911 (p=0.1508)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Very Weak Negative
+
+15. SQ Reliability: Medium
+   Pearson Correlation:  0.0961 (p=0.4732)
+   Spearman Correlation:  0.0313 (p=0.8154)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Very Weak Positive
+
+16. SQ Reliability: High
+   Pearson Correlation:  0.0873 (p=0.5146)
+   Spearman Correlation: -0.0085 (p=0.9496)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Very Weak Positive
+
+17. Type: Bug
+   Pearson Correlation:  0.0840 (p=0.5306)
+   Spearman Correlation: -0.0369 (p=0.7836)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Very Weak Positive
+
+18. Severity: Blocker
+   Pearson Correlation: -0.0166 (p=0.9018)
+   Spearman Correlation: -0.1152 (p=0.3894)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Very Weak Negative
+
+--------------------------------------------------------------------------------
+Significance markers: *** p<0.001, ** p<0.01, * p<0.05, n.s. not significant
+
+Note: This analysis uses ALL available data points (100% coverage)

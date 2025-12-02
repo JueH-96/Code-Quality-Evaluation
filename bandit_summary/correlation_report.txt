@@ -1,0 +1,81 @@
+================================================================================
+Bandit - Code Quality Metrics vs Correctness Rate Correlation Analysis
+================================================================================
+
+ANALYSIS TYPE: COMPLETE (100% of data, NOT a sample)
+
+Status: Success
+Number of LLMs: 58 (ALL LLMs included)
+Number of metrics analyzed: 8
+Data Coverage: 100% (Complete dataset, no sampling)
+
+Metric Correlation Ranking (by Absolute Pearson Correlation):
+--------------------------------------------------------------------------------
+
+1. Medium Confidence
+   Pearson Correlation:  0.3222 (p=0.0136)
+   Spearman Correlation:  0.3263 (p=0.0124)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: *
+   Correlation: Weak Positive
+
+2. Low Severity
+   Pearson Correlation:  0.2424 (p=0.0668)
+   Spearman Correlation:  0.3824 (p=0.0031)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Weak Positive
+
+3. Medium Severity
+   Pearson Correlation: -0.2152 (p=0.1047)
+   Spearman Correlation: -0.2325 (p=0.0791)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Weak Negative
+
+4. Total Issues
+   Pearson Correlation:  0.2145 (p=0.1058)
+   Spearman Correlation:  0.2852 (p=0.0300)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Weak Positive
+
+5. Codes With Issues
+   Pearson Correlation:  0.2052 (p=0.1223)
+   Spearman Correlation:  0.2419 (p=0.0674)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Weak Positive
+
+6. Issue Rate (%)
+   Pearson Correlation:  0.1935 (p=0.1455)
+   Spearman Correlation:  0.2311 (p=0.0809)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Very Weak Positive
+
+7. High Confidence
+   Pearson Correlation:  0.1810 (p=0.1739)
+   Spearman Correlation:  0.2108 (p=0.1122)
+   Sample size: 58 (all available data)
+   Note: Normalized (divided by Total Codes)
+   Significance: n.s.
+   Correlation: Very Weak Positive
+
+8. Avg Issues Per Code
+   Pearson Correlation:  0.1724 (p=0.1956)
+   Spearman Correlation:  0.1444 (p=0.2796)
+   Sample size: 58 (all available data)
+   Significance: n.s.
+   Correlation: Very Weak Positive
+
+--------------------------------------------------------------------------------
+Significance markers: *** p<0.001, ** p<0.01, * p<0.05, n.s. not significant
+
+Note: This analysis uses ALL available data points (100% coverage)
