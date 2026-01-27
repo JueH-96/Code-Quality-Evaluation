@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Code Quality Benchmark Leaderboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #2d3748;
+        }
+
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .tab-btn:hover::before {
+            width: 100%;
+        }
+
+        .tab-btn:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .tab-btn.active::before {
+            width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .table-container {
+            overflow-x: auto;
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        th {
+            padding: 0.75rem 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            user-select: none;
+        }
+
+        th.sortable {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        th.sortable:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        th.sortable::after {
+            content: ' ⇅';
+            opacity: 0.3;
+            font-size: 0.8em;
+        }
+
+        th.sortable.asc::after {
+            content: ' ▲';
+            opacity: 1;
+        }
+
+        th.sortable.desc::after {
+            content: ' ▼';
+            opacity: 1;
+        }
+
+        th:first-child {
+            text-align: left;
+            position: sticky;
+            left: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 10;
+            padding-left: 1rem;
+            min-width: 200px;
+        }
+
+        td {
+            padding: 0.75rem 0.5rem;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.85rem;
+            transition: background-color 0.2s ease;
+        }
+
+        td:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: #667eea;
+            position: sticky;
+            left: 0;
+            background: white;
+            border-right: 2px solid #e2e8f0;
+            z-index: 5;
+            padding-left: 1rem;
+            min-width: 200px;
+        }
+
+        tbody tr:hover {
+            background: #f7fafc;
+        }
+
+        tbody tr:hover td:first-child {
+            background: #f7fafc;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #fafbfc;
+        }
+
+        tbody tr:nth-child(even):hover {
+            background: #f7fafc;
+        }
+
+        tbody tr:nth-child(even) td:first-child {
+            background: #fafbfc;
+        }
+
+        tbody tr:nth-child(even):hover td:first-child {
+            background: #f7fafc;
+        }
+
+        .info-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f6f8fb 0%, #e9ecf3 100%);
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .info-box p {
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-abbr {
+            display: inline-block;
+            margin-right: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .metric-abbr strong {
+            color: #667eea;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #667eea;
+            font-size: 1.2rem;
+        }
+
+        .error {
+            text-align: center;
+            padding: 2rem;
+            background: #fed7d7;
+            color: #742a2a;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .sort-hint {
+            text-align: center;
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .tab-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 0.4rem 0.3rem;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LLM Code Quality Benchmark Leaderboard</h1>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('easy')">Easy Difficulty</button>
+            <button class="tab-btn" onclick="showTab('medium')">Medium Difficulty</button>
+            <button class="tab-btn" onclick="showTab('hard')">Hard Difficulty</button>
+            <button class="tab-btn" onclick="showTab('overall')">Overall Performance</button>
+        </div>
+
+        <div class="sort-hint">💡 Click on column headers to sort</div>
+
+        <!-- Easy Difficulty Table -->
+        <div id="easy" class="tab-content active">
+            <div class="table-container">
+                <table id="easy-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">LLM</th>
+                            <th colspan="4">Pylint</th>
+                            <th>Bandit</th>
+                            <th colspan="8">Radon</th>
+                            <th colspan="3">SonarQube</th>
+                        </tr>
+                        <tr>
+                            <th class="sortable" data-col="0">Conv</th>
+                            <th class="sortable" data-col="1">Ref</th>
+                            <th class="sortable" data-col="2">Warn</th>
+                            <th class="sortable" data-col="3">Err</th>
+                            <th class="sortable" data-col="4">Issue</th>
+                            <th class="sortable" data-col="5">Comp</th>
+                            <th class="sortable" data-col="6">MI</th>
+                            <th class="sortable" data-col="7">Func</th>
+                            <th class="sortable" data-col="8">LOC</th>
+                            <th class="sortable" data-col="9">LLOC</th>
+                            <th class="sortable" data-col="10">SLOC</th>
+                            <th class="sortable" data-col="11">CMT</th>
+                            <th class="sortable" data-col="12">BLN</th>
+                            <th class="sortable" data-col="13">Maint</th>
+                            <th class="sortable" data-col="14">Rel</th>
+                            <th class="sortable" data-col="15">Sec</th>
+                        </tr>
+                    </thead>
+                    <tbody id="easy-tbody">
+                        <tr><td colspan="17" class="loading">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Medium Difficulty Table -->
+        <div id="medium" class="tab-content">
+            <div class="table-container">
+                <table id="medium-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">LLM</th>
+                            <th colspan="4">Pylint</th>
+                            <th>Bandit</th>
+                            <th colspan="8">Radon</th>
+                            <th colspan="3">SonarQube</th>
+                        </tr>
+                        <tr>
+                            <th class="sortable" data-col="0">Conv</th>
+                            <th class="sortable" data-col="1">Ref</th>
+                            <th class="sortable" data-col="2">Warn</th>
+                            <th class="sortable" data-col="3">Err</th>
+                            <th class="sortable" data-col="4">Issue</th>
+                            <th class="sortable" data-col="5">Comp</th>
+                            <th class="sortable" data-col="6">MI</th>
+                            <th class="sortable" data-col="7">Func</th>
+                            <th class="sortable" data-col="8">LOC</th>
+                            <th class="sortable" data-col="9">LLOC</th>
+                            <th class="sortable" data-col="10">SLOC</th>
+                            <th class="sortable" data-col="11">CMT</th>
+                            <th class="sortable" data-col="12">BLN</th>
+                            <th class="sortable" data-col="13">Maint</th>
+                            <th class="sortable" data-col="14">Rel</th>
+                            <th class="sortable" data-col="15">Sec</th>
+                        </tr>
+                    </thead>
+                    <tbody id="medium-tbody">
+                        <tr><td colspan="17" class="loading">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Hard Difficulty Table -->
+        <div id="hard" class="tab-content">
+            <div class="table-container">
+                <table id="hard-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">LLM</th>
+                            <th colspan="4">Pylint</th>
+                            <th>Bandit</th>
+                            <th colspan="8">Radon</th>
+                            <th colspan="3">SonarQube</th>
+                        </tr>
+                        <tr>
+                            <th class="sortable" data-col="0">Conv</th>
+                            <th class="sortable" data-col="1">Ref</th>
+                            <th class="sortable" data-col="2">Warn</th>
+                            <th class="sortable" data-col="3">Err</th>
+                            <th class="sortable" data-col="4">Issue</th>
+                            <th class="sortable" data-col="5">Comp</th>
+                            <th class="sortable" data-col="6">MI</th>
+                            <th class="sortable" data-col="7">Func</th>
+                            <th class="sortable" data-col="8">LOC</th>
+                            <th class="sortable" data-col="9">LLOC</th>
+                            <th class="sortable" data-col="10">SLOC</th>
+                            <th class="sortable" data-col="11">CMT</th>
+                            <th class="sortable" data-col="12">BLN</th>
+                            <th class="sortable" data-col="13">Maint</th>
+                            <th class="sortable" data-col="14">Rel</th>
+                            <th class="sortable" data-col="15">Sec</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hard-tbody">
+                        <tr><td colspan="17" class="loading">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Overall Performance Table -->
+        <div id="overall" class="tab-content">
+            <div class="table-container">
+                <table id="overall-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">LLM</th>
+                            <th colspan="4">Pylint</th>
+                            <th colspan="8">Radon</th>
+                            <th colspan="3">SonarQube</th>
+                            <th>Bandit</th>
+                        </tr>
+                        <tr>
+                            <th class="sortable" data-col="0">Conv</th>
+                            <th class="sortable" data-col="1">Ref</th>
+                            <th class="sortable" data-col="2">Warn</th>
+                            <th class="sortable" data-col="3">Err</th>
+                            <th class="sortable" data-col="4">Comp</th>
+                            <th class="sortable" data-col="5">MI</th>
+                            <th class="sortable" data-col="6">Func</th>
+                            <th class="sortable" data-col="7">LOC</th>
+                            <th class="sortable" data-col="8">LLOC</th>
+                            <th class="sortable" data-col="9">SLOC</th>
+                            <th class="sortable" data-col="10">CMT</th>
+                            <th class="sortable" data-col="11">BLN</th>
+                            <th class="sortable" data-col="12">Maint</th>
+                            <th class="sortable" data-col="13">Rel</th>
+                            <th class="sortable" data-col="14">Sec</th>
+                            <th class="sortable" data-col="15">Issues</th>
+                        </tr>
+                    </thead>
+                    <tbody id="overall-tbody">
+                        <tr><td colspan="17" class="loading">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>Metric Abbreviations</h3>
+            <div>
+                <div class="metric-abbr"><strong>Conv:</strong> Convention</div>
+                <div class="metric-abbr"><strong>Ref:</strong> Refactor</div>
+                <div class="metric-abbr"><strong>Warn:</strong> Warning</div>
+                <div class="metric-abbr"><strong>Err:</strong> Error</div>
+                <div class="metric-abbr"><strong>Comp:</strong> Complexity</div>
+                <div class="metric-abbr"><strong>Maint:</strong> Maintainability</div>
+                <div class="metric-abbr"><strong>Rel:</strong> Reliability</div>
+                <div class="metric-abbr"><strong>Sec:</strong> Security</div>
+            </div>
+            <div style="margin-top: 1rem;">
+                <div class="metric-abbr"><strong>MI:</strong> Maintainability Index</div>
+                <div class="metric-abbr"><strong>Func:</strong> Functions</div>
+                <div class="metric-abbr"><strong>LOC:</strong> Lines of Code</div>
+                <div class="metric-abbr"><strong>LLOC:</strong> Logical Lines of Code</div>
+                <div class="metric-abbr"><strong>SLOC:</strong> Source Lines of Code</div>
+                <div class="metric-abbr"><strong>CMT:</strong> Comments</div>
+                <div class="metric-abbr"><strong>BLN:</strong> Blank Lines</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global data storage
+        let allData = null;
+
+        // Load data from JSON file
+        async function loadData() {
+            try {
+                const response = await fetch('benchmark_data.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load benchmark data');
+                }
+                allData = await response.json();
+                populateTables(allData);
+                initializeSorting();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                showError('Failed to load benchmark data. Please make sure benchmark_data.json is in the same directory.');
+            }
+        }
+
+        function showError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error';
+            errorDiv.textContent = message;
+            document.querySelector('.container').insertBefore(errorDiv, document.querySelector('.tabs'));
+        }
+
+        function populateTables(data) {
+            // Populate difficulty-based tables
+            if (data.comprehensive) {
+                populateTable('easy-tbody', data.comprehensive.easy, data.comprehensive.llms);
+                populateTable('medium-tbody', data.comprehensive.medium, data.comprehensive.llms);
+                populateTable('hard-tbody', data.comprehensive.hard, data.comprehensive.llms);
+            }
+
+            // Populate overall table
+            if (data.overall) {
+                populateTable('overall-tbody', data.overall.data, data.overall.llms);
+            }
+        }
+
+        function populateTable(tbodyId, data, llmList) {
+            const tbody = document.getElementById(tbodyId);
+            tbody.innerHTML = '';
+
+            if (!data || !llmList) {
+                tbody.innerHTML = '<tr><td colspan="20" class="error">No data available</td></tr>';
+                return;
+            }
+
+            llmList.forEach((llm, i) => {
+                if (data[i]) {
+                    const row = document.createElement('tr');
+                    const nameCell = document.createElement('td');
+                    nameCell.textContent = llm;
+                    row.appendChild(nameCell);
+
+                    data[i].forEach(value => {
+                        const cell = document.createElement('td');
+                        cell.textContent = typeof value === 'number' ? value.toFixed(2) : value;
+                        cell.setAttribute('data-value', value); // Store original value for sorting
+                        row.appendChild(cell);
+                    });
+
+                    tbody.appendChild(row);
+                }
+            });
+        }
+
+        function initializeSorting() {
+            // Add click listeners to all sortable headers
+            document.querySelectorAll('th.sortable').forEach(header => {
+                header.addEventListener('click', function() {
+                    const table = this.closest('table');
+                    const tbody = table.querySelector('tbody');
+                    const colIndex = parseInt(this.getAttribute('data-col'));
+                    const currentSort = this.classList.contains('asc') ? 'asc' :
+                                       this.classList.contains('desc') ? 'desc' : 'none';
+
+                    // Remove sort indicators from all headers in this table
+                    table.querySelectorAll('th.sortable').forEach(h => {
+                        h.classList.remove('asc', 'desc');
+                    });
+
+                    // Determine new sort direction
+                    let newSort;
+                    if (currentSort === 'none') {
+                        newSort = 'asc';
+                    } else if (currentSort === 'asc') {
+                        newSort = 'desc';
+                    } else {
+                        newSort = 'asc';
+                    }
+
+                    // Add sort indicator to clicked header
+                    this.classList.add(newSort);
+
+                    // Sort the table
+                    sortTable(tbody, colIndex, newSort);
+                });
+            });
+        }
+
+        function sortTable(tbody, colIndex, direction) {
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+
+            // Sort rows
+            rows.sort((a, b) => {
+                // Get cells at the specified column (+1 because first column is LLM name)
+                const cellA = a.cells[colIndex + 1];
+                const cellB = b.cells[colIndex + 1];
+
+                // Get values (use data-value attribute if available, otherwise parse text)
+                const valueA = parseFloat(cellA.getAttribute('data-value') || cellA.textContent);
+                const valueB = parseFloat(cellB.getAttribute('data-value') || cellB.textContent);
+
+                // Compare values
+                if (direction === 'asc') {
+                    return valueA - valueB;
+                } else {
+                    return valueB - valueA;
+                }
+            });
+
+            // Re-append rows in sorted order
+            rows.forEach(row => tbody.appendChild(row));
+        }
+
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Remove active from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active to clicked button
+            event.target.classList.add('active');
+        }
+
+        // Load data when page loads
+        window.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+</html>

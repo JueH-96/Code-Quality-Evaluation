@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metric Correlations Across Problem Difficulties</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: #2d3748;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        #chart-container {
+            width: 100%;
+            min-height: 600px;
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .info-panel {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f6f8fb 0%, #e9ecf3 100%);
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .info-panel h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .info-panel p {
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 0.75rem;
+        }
+
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .significance-legend {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px dashed #cbd5e0;
+        }
+
+        .significance-legend h4 {
+            color: #4a5568;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .toggle-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Metric Correlations Across Problem Difficulties</h1>
+
+        <div id="chart-container"></div>
+
+        <div class="info-panel">
+            <h3>About This Visualization</h3>
+            <p>This chart shows the correlation between code correctness and various quality metrics across different problem difficulty levels (Easy, Medium, Hard, and All combined).</p>
+
+            <div style="margin-top: 1rem;">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ff9f40;"></div>
+                    <span><strong>Easy</strong> - Simple problems</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #4dc9f6;"></div>
+                    <span><strong>Medium</strong> - Moderate complexity</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #36a2eb;"></div>
+                    <span><strong>Hard</strong> - Complex problems</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f4d03f;"></div>
+                    <span><strong>All</strong> - Combined data</span>
+                </div>
+            </div>
+
+            <div class="significance-legend">
+                <h4>Statistical Significance Levels:</h4>
+                <p>● p < 0.001 (***) - Highly significant</p>
+                <p>■ p < 0.01 (**) - Very significant</p>
+                <p>▲ p < 0.05 (*) - Significant</p>
+                <p>✕ Not significant</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data from the chart
+        const metrics = [
+            'SLOC', 'LLOC', 'Complexity', 'LOC', 'Convention (C)', 'Comments',
+            'Blank', 'Warning (W)', 'Maintainability Issues Per Code',
+            'Issues Per Code', 'Functions', 'Maintainability Index',
+            'Refactor (R)', 'Reliability Issues Bas Code', 'Error (E)'
+        ];
+
+        const easyData = [0.54, 0.54, 0.30, 0.29, -0.55, 0.44, 0.33, -0.26, 0.06, -0.51, 0.23, -0.08, 0.51, 0.12, 0.04];
+        const mediumData = [0.79, 0.79, 0.65, 0.59, -0.52, 0.43, 0.42, -0.27, 0.17, -0.42, 0.00, 0.00, 0.00, -0.28, 0.04];
+        const hardData = [0.79, 0.79, 0.78, 0.67, -0.36, 0.45, 0.21, -0.26, 0.24, -0.42, 0.00, -0.22, -0.08, 0.04, -0.09];
+        const allData = [0.82, 0.82, 0.77, 0.67, -0.54, 0.45, 0.32, -0.27, 0.25, -0.52, 0.22, -0.03, 0.04, 0.11, 0.04];
+
+        // Significance markers
+        const easyMarkers = ['●', '●', '●', '●', '●', '●', '●', '●', '✕', '●', '▲', '✕', '●', '✕', '✕'];
+        const mediumMarkers = ['●', '●', '●', '●', '●', '●', '●', '●', '✕', '●', '✕', '✕', '✕', '▲', '✕'];
+        const hardMarkers = ['●', '●', '●', '●', '●', '●', '▲', '●', '▲', '●', '✕', '▲', '✕', '✕', '✕'];
+        const allMarkers = ['●', '●', '●', '●', '●', '●', '●', '●', '▲', '●', '▲', '✕', '✕', '✕', '✕'];
+
+        const trace1 = {
+            x: metrics,
+            y: easyData,
+            mode: 'lines+markers+text',
+            name: 'Easy',
+            line: { color: '#ff9f40', width: 3 },
+            marker: { size: 10, symbol: easyMarkers },
+            text: easyMarkers,
+            textposition: 'top center',
+            textfont: { size: 14 }
+        };
+
+        const trace2 = {
+            x: metrics,
+            y: mediumData,
+            mode: 'lines+markers+text',
+            name: 'Medium',
+            line: { color: '#4dc9f6', width: 3 },
+            marker: { size: 10, symbol: mediumMarkers },
+            text: mediumMarkers,
+            textposition: 'top center',
+            textfont: { size: 14 }
+        };
+
+        const trace3 = {
+            x: metrics,
+            y: hardData,
+            mode: 'lines+markers+text',
+            name: 'Hard',
+            line: { color: '#36a2eb', width: 3 },
+            marker: { size: 10, symbol: hardMarkers },
+            text: hardMarkers,
+            textposition: 'top center',
+            textfont: { size: 14 }
+        };
+
+        const trace4 = {
+            x: metrics,
+            y: allData,
+            mode: 'lines+markers+text',
+            name: 'All',
+            line: { color: '#f4d03f', width: 3 },
+            marker: { size: 10, symbol: allMarkers },
+            text: allMarkers,
+            textposition: 'top center',
+            textfont: { size: 14 }
+        };
+
+        const layout = {
+            xaxis: {
+                title: {
+                    text: 'Metrics',
+                    font: { size: 16, color: '#2d3748', family: 'Segoe UI' }
+                },
+                tickangle: -45,
+                tickfont: { size: 12, color: '#4a5568' }
+            },
+            yaxis: {
+                title: {
+                    text: 'Correlation with Correctness Rate',
+                    font: { size: 16, color: '#2d3748', family: 'Segoe UI' }
+                },
+                range: [-1, 1],
+                tickfont: { size: 12, color: '#4a5568' },
+                gridcolor: '#e2e8f0',
+                zeroline: true,
+                zerolinecolor: '#cbd5e0',
+                zerolinewidth: 2
+            },
+            hovermode: 'closest',
+            showlegend: true,
+            legend: {
+                x: 1,
+                y: 1,
+                xanchor: 'right',
+                bgcolor: 'rgba(255, 255, 255, 0.95)',
+                bordercolor: '#e2e8f0',
+                borderwidth: 2,
+                font: { size: 14, family: 'Segoe UI' }
+            },
+            plot_bgcolor: '#f8fafc',
+            paper_bgcolor: '#f8fafc',
+            margin: { t: 40, r: 80, b: 150, l: 80 }
+        };
+
+        const config = {
+            responsive: true,
+            displayModeBar: true,
+            displaylogo: false,
+            modeBarButtonsToRemove: ['lasso2d', 'select2d']
+        };
+
+        Plotly.newPlot('chart-container', [trace1, trace2, trace3, trace4], layout, config);
+
+        // Make chart responsive
+        window.addEventListener('resize', function() {
+            Plotly.Plots.resize('chart-container');
+        });
+    </script>
+</body>
+</html>
