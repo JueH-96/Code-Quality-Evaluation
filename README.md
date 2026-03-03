@@ -29,9 +29,9 @@ This project provides four independent code checkers that extract code from JSON
 - **Python**: 3.12+
 - **Operating System**: Linux / macOS / Windows
 - **Required Tools**: 
-  - Pylint
-  - Radon
-  - Bandit
+  - Pylint 3.3.5
+  - Radon 6.0.1
+  - Bandit 1。8.6
   - SonarQube Scanner (for SonarQube checks)
 
 ## Installation
